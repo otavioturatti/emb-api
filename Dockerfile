@@ -18,6 +18,11 @@ RUN pip install --no-cache-dir numpy==1.24.3
 RUN pip install --no-cache-dir pydantic==2.5.3
 RUN pip install --no-cache-dir fastapi==0.109.0
 RUN pip install --no-cache-dir uvicorn[standard]==0.27.0
+
+# Instalar PyTorch CPU-only (sem CUDA) para economizar espaço
+RUN pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cpu
+
+# Instalar sentence-transformers (vai usar o PyTorch CPU já instalado)
 RUN pip install --no-cache-dir sentence-transformers==2.3.1
 
 # Copiar código da aplicação
